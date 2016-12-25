@@ -14,7 +14,7 @@
     <dependencies>
   	<dependency>
   		<groupId>ke</groupId>
-  		<artifactId>cms-core</artifactId>
+  		<artifactId>alphacba-cms-core</artifactId>
   		<version>1.0.0-SNAPSHOT</version>
   	</dependency>
   </dependencies>
