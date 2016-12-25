@@ -12,6 +12,7 @@ public class WebCommonAction {
 		return "/manage/index";
 	}
 	
+	
 	@RequestMapping("pagecontent.htm")
 	public String pageContent(Model model){
 		return "/manage/pagecontent";
