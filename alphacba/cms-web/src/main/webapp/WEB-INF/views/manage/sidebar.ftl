@@ -1,32 +1,25 @@
-<div class="sidebar-menu toggle-others fixed" style="">
-			
+
 			<div class="sidebar-menu-inner ps-container ps-active-y">	
-				
 				<header class="logo-env">
-					
 					<!-- logo -->
 					<div class="logo">
 						<a href="dashboard-1.html" class="logo-expanded">
 							<img src="assets/images/logo@2x.png" width="80" alt="">
 						</a>
-						
 						<a href="dashboard-1.html" class="logo-collapsed">
 							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="">
 						</a>
 					</div>
-					
 					<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
 					<div class="mobile-menu-toggle visible-xs">
 						<a href="#" data-toggle="user-info-menu">
 							<i class="fa-bell-o"></i>
 							<span class="badge badge-success">7</span>
 						</a>
-						
 						<a href="#" data-toggle="mobile-menu">
 							<i class="fa-bars"></i>
 						</a>
 					</div>
-					
 					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
 					<div class="settings-icon">
 						<a href="#" data-toggle="settings-pane" data-animate="true">
@@ -591,5 +584,5 @@
 						
 			<div class="ps-scrollbar-x-rail" style="display: block; width: 340px; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="display: inherit; top: 0px; height: 393px; right: 2px;"><div class="ps-scrollbar-y" style="top: 0px; height: 133px;"></div></div></div>
 			
-		</div>
+		
 		

@@ -1,4 +1,4 @@
-package ke.alphacba.cms.web.util;
+package ke.alphacba.cms.core.util;
 
 import javax.servlet.http.HttpServletRequest;
 

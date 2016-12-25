@@ -1,23 +1,16 @@
-/*
- *	Copyright © 2013 Changsha Shishuo Network Technology Co., Ltd. All rights reserved.
- *	长沙市师说网络科技有限公司 版权所有
- *	http://www.shishuo.com
- */
-
 package ke.alphacba.cms.web.filter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import ke.alphacba.cms.web.util.HttpUtils;
+import ke.alphacba.cms.core.util.HttpUtils;
 
 /**
- * @author Herbert
+ * @author alphacba
  * 
  */
 @Component

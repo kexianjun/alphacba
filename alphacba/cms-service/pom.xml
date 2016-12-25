@@ -7,11 +7,13 @@
     <artifactId>alphacba</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>cms-web</artifactId>
-  <name>cms-web</name>
+  <artifactId>cms-service</artifactId>
+  <name>cms-service</name>
   <url>http://maven.apache.org</url>
-  
-    <dependencies>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
   	<dependency>
   		<groupId>ke</groupId>
   		<artifactId>cms-core</artifactId>
@@ -19,9 +21,6 @@
   	</dependency>
   </dependencies>
   
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
   <build>
 		<plugins>
             <plugin>  

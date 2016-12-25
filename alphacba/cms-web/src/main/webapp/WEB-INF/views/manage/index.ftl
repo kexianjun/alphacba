@@ -149,9 +149,11 @@
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
 		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
 		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed" style="">
 		<#include "sidebar.ftl">
+		</div>
 		<div class="main-content">
-					
+				
 			<!-- User Info, Notifications and Menu Bar -->
 			<#include "cotentheader.ftl">
 			<div id="page-content"></div>
@@ -190,7 +192,6 @@
 	<script src="/assets/js/joinable.js"></script>
 	<script src="/assets/js/xenon-api.js"></script>
 	<script src="/assets/js/xenon-toggles.js"></script>
-
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="/assets/js/xenon-custom.js"></script>
