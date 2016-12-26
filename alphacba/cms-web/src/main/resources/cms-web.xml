@@ -121,4 +121,10 @@
 			</bean>
 		</property>
 	</bean>
+	
+	<bean id="iCMSServiceRpc"  
+        class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">  
+        <property name="serviceUrl" value="http://localhost:9888/cms-service/remoteservice" />  
+        <property name="serviceInterface" value="ke.alphacba.cms.core.rpc.CMSServiceRpc" />  
+    </bean> 
 </beans>

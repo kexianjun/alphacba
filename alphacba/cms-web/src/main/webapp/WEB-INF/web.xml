@@ -8,7 +8,7 @@
 	
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>alphacba.cms.root</param-value>
+		<param-value>alphacba.cms-web.root</param-value>
 	</context-param>
 	
 	<servlet>
@@ -18,7 +18,7 @@
 		<!--指定spring配置文件的位置 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:applicationContext.xml</param-value>
+			<param-value>classpath:cms-web.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

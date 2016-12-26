@@ -1,6 +1,7 @@
 <html>
 	<head></head>
 	<body>
+		<h1>${hello}</h1>
 		<div class="row">
 				<div class="col-md-12">
 				
