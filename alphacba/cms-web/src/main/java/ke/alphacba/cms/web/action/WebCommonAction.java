@@ -1,15 +1,28 @@
 package ke.alphacba.cms.web.action;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import ke.alphacba.cms.core.api.dto.cms.UserInfoReq;
+import ke.alphacba.cms.core.api.dto.cms.UserInfoResp;
+import ke.alphacba.cms.core.api.pojo.UserInfo;
+import ke.alphacba.cms.core.cache.SysCacheService;
 import ke.alphacba.cms.core.rpc.CMSServiceRpc;
 
 @Controller
 @RequestMapping("/")
 public class WebCommonAction {
+	
+	@Autowired
+	private SysCacheService sysCacheService;
 	@Autowired
 	private CMSServiceRpc cmsServiceRpc;
 	@RequestMapping("index.htm")
@@ -17,12 +30,58 @@ public class WebCommonAction {
 		return "/manage/index";
 	}
 	
+	@RequestMapping(value="login.htm",method=RequestMethod.GET)
+	public String login(Model model){
+		return "/manage/login";
+	}
+	
 	
 	@RequestMapping("pagecontent.htm")
 	public String pageContent(Model model){
-		String helloStr = cmsServiceRpc.helloWorld("GOD");
+		String helloStr = null;
+		try{
+			helloStr = cmsServiceRpc.helloWorld("GOD");
+		}catch (Exception e) {
+			
+		}
+		if (StringUtils.isEmpty(helloStr)) {
+			helloStr = "rpc failed";
+		}
+		final String keyf = "mykey";
+		String retSring = null;
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUserName("kexianjun");
+		userInfo.setUserPhone("123456677");
+		userInfo.setUserPassword("forget-me-not");
+		boolean result = sysCacheService.saveObject(keyf, userInfo);
+		UserInfo redisReture = (UserInfo) sysCacheService.getObject(keyf, userInfo.getClass());
+		UserInfoReq userInfoReq = new UserInfoReq();
+		userInfoReq.setParams(redisReture);
+		UserInfoResp userInfoResp = cmsServiceRpc.getUserInfo(userInfoReq);
+		if (userInfoResp.getRespItem() != null) {
+			model.addAttribute("myKey", userInfoResp.getRespItem());
+			
+		}
 		model.addAttribute("hello",helloStr);
+		model.addAttribute("userInfo", userInfoResp.getRespItem());
 		return "/manage/pagecontent";
 		
 	}
+	
+	private Object toObject(byte[] bytes) {
+        Object obj = null;
+        try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            obj = ois.readObject();
+            ois.close();
+            bis.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return obj;
+    }
+
 }

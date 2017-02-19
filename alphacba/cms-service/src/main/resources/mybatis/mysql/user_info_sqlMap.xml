@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ke.alphacba.cms.UserInfo" >
+  <resultMap id="BaseResultMap" type="ke.alphacba.cms.core.api.pojo.UserInfo" >
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="VARCHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="login_mac" property="loginMac" jdbcType="VARCHAR" />
+    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="last_login_mac" property="lastLoginMac" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="BIGINT" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="BIGINT" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" /> 
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />   
+  </resultMap>
+  <sql id="baseColumns" >
+    user_id,
+    user_name,
+    user_password,
+    user_type,
+    user_status,
+    login_ip,
+    login_mac,
+    last_login_ip,
+    last_login_mac,
+    gmt_create,
+    gmt_modify,
+    user_email,
+    user_phone,
+    remark1
+  </sql>
+  
+    <sql id="listWhereClause" >
+    <if test="userId != null and userId != 0" >
+      AND user_id = #{fileNo,userId=BIGINT}
+    </if>
+    <if test="userName != null and userName != ''" >
+      AND user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userType != null and userType != ''">
+      AND user_type = #{userType,jdbcType=VARCHAR}
+    </if>
+    <if test="userStatus != null and userStatus != ''">
+      AND user_status = #{userStatus,jdbcType=VARCHAR}
+    </if>
+  </sql>
+  
+  <select id="selectUserInfo" resultMap="BaseResultMap" parameterType="ke.alphacba.cms.core.api.pojo.UserInfo" >
+	  select 
+	  	<include refid="baseColumns" />
+	    from user_info
+	    where 1=1
+	    <include refid="listWhereClause" />
+  </select>
+</mapper>
