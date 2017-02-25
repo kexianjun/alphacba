@@ -2,6 +2,6 @@ package ke.alphacba.cms.core.cache;
 
 public interface SysCacheService {
 	boolean removeObject(String key);
-	boolean saveObject(String key, Object object);
-	Object getObject(String key, Class<?> clazz);
+	<T> boolean saveObject(String key, T object);
+	<T>T getObject(String key, Class<T> clazz);
 }

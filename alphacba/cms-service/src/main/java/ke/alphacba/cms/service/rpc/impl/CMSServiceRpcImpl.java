@@ -1,4 +1,4 @@
-package ke.alphacba.cms.service.rpcimpl;
+package ke.alphacba.cms.service.rpc.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

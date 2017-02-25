@@ -28,7 +28,7 @@
 	<tx:annotation-driven />
 	<task:annotation-driven />
 	<!-- spring remoting 配置 -->
-	<bean name="remote" class="ke.alphacba.cms.service.rpcimpl.CMSServiceRpcImpl" />  
+	<bean name="remote" class="ke.alphacba.cms.service.rpc.impl.CMSServiceRpcImpl" />  
 	<bean name="/remoteservice"  
 		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">  
        	<property name="service" ref="remote" />  

@@ -1,9 +1,5 @@
 package ke.alphacba.cms.web.action;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +50,7 @@ public class WebCommonAction {
 		userInfo.setUserPhone("123456677");
 		userInfo.setUserPassword("forget-me-not");
 		boolean result = sysCacheService.saveObject(keyf, userInfo);
-		UserInfo redisReture = (UserInfo) sysCacheService.getObject(keyf, userInfo.getClass());
+		UserInfo redisReture = sysCacheService.getObject(keyf, userInfo.getClass());
 		UserInfoReq userInfoReq = new UserInfoReq();
 		userInfoReq.setParams(redisReture);
 		UserInfoResp userInfoResp = cmsServiceRpc.getUserInfo(userInfoReq);
@@ -68,20 +64,5 @@ public class WebCommonAction {
 		
 	}
 	
-	private Object toObject(byte[] bytes) {
-        Object obj = null;
-        try {
-            ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
-            ObjectInputStream ois = new ObjectInputStream(bis);
-            obj = ois.readObject();
-            ois.close();
-            bis.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        return obj;
-    }
 
 }

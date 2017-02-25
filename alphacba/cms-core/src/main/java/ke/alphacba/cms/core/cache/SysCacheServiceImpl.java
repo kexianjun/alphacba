@@ -32,9 +32,9 @@ public class SysCacheServiceImpl extends RedisTemplate<String, Object> implement
 	}
 
 	@Override
-	public boolean saveObject(String key, Object object) {
+	public <T> boolean saveObject(String key, T object) {
+		
 		boolean result = super.execute(new RedisCallback<Boolean>() {
-
 			@Override
 			public Boolean doInRedis(RedisConnection connection) throws DataAccessException {
 				connection.set(key.getBytes(), objectSerialize(object));
@@ -43,22 +43,22 @@ public class SysCacheServiceImpl extends RedisTemplate<String, Object> implement
 		});
 		return result;
 	}
-
+	
 	@Override
-	public Object getObject(String key, Class<?> clazz) {
-		Object object = super.execute(new RedisCallback<Object>() {
+	public <T> T getObject(String key, Class<T> clazz) {
+		T result = super.execute(new RedisCallback<T>() {
 
 			@Override
-			public Object doInRedis(RedisConnection connection) throws DataAccessException {
+			public T doInRedis(RedisConnection connection) throws DataAccessException {
 				byte[] bytes = connection.get(key.getBytes());
-				Object redisObject = objectDeserialize(bytes, clazz);
-				return redisObject;
+				T retObj = objectDeserialize(bytes, clazz);
+				return retObj;
 			}
 		});
-		return object;
+		return result;
 	}
 	
-	private byte[] objectSerialize(Object object){
+	private <T>byte[] objectSerialize(T object){
 		byte [] bytes = null;
 		try {
 			bytes = objectMapper.writeValueAsString(object).getBytes();
@@ -68,8 +68,8 @@ public class SysCacheServiceImpl extends RedisTemplate<String, Object> implement
 		return bytes;
 	}
 	
-	private Object objectDeserialize(byte[] bytes, Class<?> clazz){
-		Object object = null;
+	private <T> T objectDeserialize(byte[] bytes, Class<T> clazz){
+		T object = null;
 		try {
 			object = objectMapper.readValue(bytes, clazz);
 		} catch (Exception e) {
@@ -77,4 +77,5 @@ public class SysCacheServiceImpl extends RedisTemplate<String, Object> implement
 		}
 		return object;
 	}
+
 }
