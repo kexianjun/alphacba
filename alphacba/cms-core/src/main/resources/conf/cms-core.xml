@@ -24,13 +24,24 @@
 
 	<!-- 自动扫描的包名 -->
 	<context:component-scan base-package="ke.alphacba.cms.core"></context:component-scan>
-	<!-- redis configuration -->
-	<!-- <bean id="redisConnector" class="ke.alphacba.cms.core.cache.RedisConnecter" destroy-method="close"/>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
 	
-	<bean id="sysCacheService" class="ke.alphacba.cms.core.cache.SysCacheServiceImpl">
+	<!--sysCacheService 配置  -->
+	<bean id="sysCacheService" class="ke.alphacba.cms.core.cache.redis.SysCacheServiceImpl">
 		<constructor-arg>
-			<ref bean="redisConnector" />
+			<ref bean="connectionFactory" />
 		</constructor-arg>
-	</bean> -->
+	</bean>
+	
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+        <property name="maxIdle" value="${redis.maxIdle}" />  
+        <property name="testWhileIdle" value="${redis.testOnBorrow}" />  
+    </bean>  
+      
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"  
+        p:host-name="${redis.host}" 
+        p:port="${redis.port}" 
+        p:password="${redis.pass}"  
+        p:pool-config-ref="poolConfig"/>
 		
 </beans>

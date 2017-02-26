@@ -1,4 +1,4 @@
-package ke.alphacba.cms.core.cache;
+package ke.alphacba.cms.core.cache.redis;
 
 public interface SysCacheService {
 	boolean removeObject(String key);

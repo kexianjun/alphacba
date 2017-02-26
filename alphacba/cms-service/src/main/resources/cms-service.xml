@@ -35,7 +35,8 @@
       	<property name="serviceInterface" value="ke.alphacba.cms.core.rpc.CMSServiceRpc" />  
 	</bean>  
 	<!-- 加载properties文件 -->
-	<context:property-placeholder location="classpath:alphacba-cms.properties"/>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
+	
 	<bean id="transactionTemplate"
 		class="org.springframework.transaction.support.TransactionTemplate">
 		<property name="transactionManager" ref="transactionManager" />
@@ -72,18 +73,4 @@
 		scope="prototype">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
-	
-	<!-- redis configuration -->
-	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
-        <property name="maxIdle" value="${redis.maxIdle}" />  
-        <property name="testWhileIdle" value="${redis.testOnBorrow}" />  
-    </bean>  
-      
-    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"  
-        p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"  p:pool-config-ref="poolConfig"/>  
-      
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">  
-        <property name="connectionFactory" ref="connectionFactory" />  
-    </bean> 
-	
 </beans>

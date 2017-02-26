@@ -27,12 +27,7 @@
 	
 	<mvc:annotation-driven />
 	
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location">
-           <value>classpath:cms-web.properties</value>
-		</property>
-	</bean>
-
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
 	<mvc:resources location="/js/" mapping="/js/**"/>
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/assets/" mapping="/assets/**"/>
@@ -86,7 +81,22 @@
 		<property name="maxUploadSize" value="209715200" />
 		<property name="resolveLazily" value="true" />
 	</bean>
-
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="ke.alphacba.cms.core.web.interceptor.GlobalInterceptor">
+				<property name="excludedUrl">
+					<list>
+						<value>/login.htm</value>
+						<value>/login/login.json</value>
+						<value>/login/logout.htm</value>
+						<value>/login/checkcode.json</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	<!-- 登陆时验证码的配置 -->
 	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
 		<property name="config">
@@ -129,41 +139,4 @@
         <property name="serviceUrl" value="http://localhost:8100/cms-service/remoteservice" />  
         <property name="serviceInterface" value="ke.alphacba.cms.core.rpc.CMSServiceRpc" />  
     </bean> 
-    
-    <!-- <bean id="redisConnector" class="ke.alphacba.cms.core.cache.RedisConnecter" destroy-method="close">
-    	<property name="redisHost">
-    		<value>${redis.host}</value>
-    	</property>
-    	<property name="redisPort">
-    		<value>${redis.port}</value>
-    	</property>
-    	<property name="redisPass">
-    		<value>${redis.pass}</value>
-    	</property>
-    	<property name="redisMaxIdle">
-    		<value>${redis.maxIdle}</value>
-    	</property>
-    	<property name="redisTestOnBorrow">
-    		<value>${redis.testOnBorrow}</value>
-    	</property>
-    </bean> -->
-	
-	<bean id="sysCacheService" class="ke.alphacba.cms.core.cache.SysCacheServiceImpl">
-		<constructor-arg>
-			<ref bean="connectionFactory" />
-		</constructor-arg>
-	</bean>
-	
-	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
-        <property name="maxIdle" value="${redis.maxIdle}" />  
-        <property name="testWhileIdle" value="${redis.testOnBorrow}" />  
-    </bean>  
-      
-    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"  
-        p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"  p:pool-config-ref="poolConfig"/>  
-      
-    <!-- <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">  
-        <property name="connectionFactory" ref="connectionFactory" />  
-    </bean>  -->
-    
 </beans>
