@@ -1,4 +1,4 @@
-package ke.alphacba.cms.core.cache;
+package ke.alphacba.cms.core.cache.redis;
 
 import java.io.IOException;
 

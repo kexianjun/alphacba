@@ -11,6 +11,19 @@
 		<param-value>alphacba.cms-service.root</param-value>
 	</context-param>
 	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:conf/cms-core.xml</param-value>
+	</context-param>
+	<context-param>
+    <param-name>alphacbaConfigLocation</param-name>
+    <param-value>alphacba-cms.properties</param-value>
+  </context-param>
+   <listener>
+   	<!-- <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
+   	<listener-class>ke.alphacba.cms.core.context.ContextLoaderListener</listener-class>
+   </listener>
+	
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

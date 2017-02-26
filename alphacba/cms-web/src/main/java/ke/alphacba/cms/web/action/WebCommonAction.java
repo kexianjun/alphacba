@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ke.alphacba.cms.core.api.dto.cms.UserInfoReq;
 import ke.alphacba.cms.core.api.dto.cms.UserInfoResp;
 import ke.alphacba.cms.core.api.pojo.UserInfo;
-import ke.alphacba.cms.core.cache.SysCacheService;
+import ke.alphacba.cms.core.cache.redis.SysCacheService;
 import ke.alphacba.cms.core.rpc.CMSServiceRpc;
 
 @Controller
@@ -21,16 +21,6 @@ public class WebCommonAction {
 	private SysCacheService sysCacheService;
 	@Autowired
 	private CMSServiceRpc cmsServiceRpc;
-	@RequestMapping("index.htm")
-	public String index(Model model){
-		return "/manage/index";
-	}
-	
-	@RequestMapping(value="login.htm",method=RequestMethod.GET)
-	public String login(Model model){
-		return "/manage/login";
-	}
-	
 	
 	@RequestMapping("pagecontent.htm")
 	public String pageContent(Model model){
