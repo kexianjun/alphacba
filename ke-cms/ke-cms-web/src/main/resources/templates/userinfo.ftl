@@ -1,0 +1,10 @@
+<html>
+	<head>
+		<title>UserInfo</title>
+	</head>
+	<body>
+		<h1>用户ID:${userinfo.userId}</h1>
+		<h1>用户姓名:${userinfo.userName}</h1>
+		<h1>password:${userinfo.password}</h1>
+	</body>
+</html>
