@@ -1,2 +1,2 @@
 # alphacba
-Atempt to create a simple,efficient,multi-user CMS;
+Alphacba's Repository,almost the projects are using java to develope;
