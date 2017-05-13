@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ke.alphacba.cms.core.api.dto.cms.UserInfoReq;
 import ke.alphacba.cms.core.api.dto.cms.UserInfoResp;
 import ke.alphacba.cms.core.api.pojo.UserInfo;
-import ke.alphacba.cms.core.cache.redis.SysCacheService;
+import ke.alphacba.cms.core.cache.SysCacheService;
 import ke.alphacba.cms.core.rpc.CMSServiceRpc;
 
 @Controller

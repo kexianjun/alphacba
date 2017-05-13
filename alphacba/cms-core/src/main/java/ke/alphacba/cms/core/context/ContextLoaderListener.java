@@ -10,6 +10,8 @@ import javax.servlet.ServletContextListener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.StringUtils;
@@ -19,6 +21,8 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
 implements ServletContextListener{
 	public static final String CONFIG_LOCATION = "alphacbaConfigLocation";
 	private static final Logger logger = LoggerFactory.getLogger(ContextLoaderListener.class);
+	@Autowired
+	private Environment environment;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent event) {

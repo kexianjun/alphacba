@@ -2,6 +2,8 @@ package ke.alphacba.cms.core.api.dto.base;
 
 import java.io.Serializable;
 
+import ke.alphacba.cms.core.meta.MetaDataService;
+
 public class BaseResp implements Serializable {
 	/**
 	 * 
@@ -23,6 +25,7 @@ public class BaseResp implements Serializable {
 	}
 	public void setErrorNo(int errorNo, Object ...objects) {
 		this.errorNo = errorNo;
+		setErrorInfo(MetaDataService.getErrorInfo(errorNo, objects));
 	}
 	public String getErrorInfo() {
 		return errorInfo;
@@ -30,6 +33,4 @@ public class BaseResp implements Serializable {
 	public void setErrorInfo(String errorInfo) {
 		this.errorInfo = errorInfo;
 	}
-	
-	
 }

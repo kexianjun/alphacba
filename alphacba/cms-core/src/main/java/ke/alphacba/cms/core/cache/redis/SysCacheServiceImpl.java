@@ -10,6 +10,8 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import ke.alphacba.cms.core.cache.SysCacheService;
+
 public class SysCacheServiceImpl extends RedisTemplate<String, Object> implements SysCacheService {
 	private ObjectMapper objectMapper;
 	public SysCacheServiceImpl(JedisConnectionFactory factory) throws IOException {

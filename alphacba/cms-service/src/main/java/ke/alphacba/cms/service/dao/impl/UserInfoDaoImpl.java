@@ -21,9 +21,15 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
 		return userInfoResp;
 	}
 
+	
 	@Override
 	public BaseResp addUserInfo(UserInfoReq userInfoReq) {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public UserInfoResp pageQueryUserInfo(UserInfoReq userInfoReq) {
 		return null;
 	}
 

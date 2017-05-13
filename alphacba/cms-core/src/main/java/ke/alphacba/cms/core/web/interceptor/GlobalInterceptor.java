@@ -22,7 +22,7 @@ public class GlobalInterceptor implements HandlerInterceptor {
 	private static final Logger logger = LoggerFactory.getLogger(GlobalInterceptor.class);
 	/*不用权限过滤的URL*/
 	private List<String> excludedUrl;
-
+	
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,

@@ -35,7 +35,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="ke.alphacba.cms.web.filter.GlobalInterceptor"></bean>
+			<bean class="ke.alphacba.cms.core.web.interceptor.GlobalInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 
