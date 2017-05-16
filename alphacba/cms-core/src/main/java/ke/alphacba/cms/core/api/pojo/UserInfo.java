@@ -25,6 +25,7 @@ public class UserInfo implements Serializable{
 	public Long getUserId() {
 		return userId;
 	}
+	
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
