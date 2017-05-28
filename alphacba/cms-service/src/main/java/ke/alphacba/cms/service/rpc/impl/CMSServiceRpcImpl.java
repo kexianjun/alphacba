@@ -2,8 +2,9 @@ package ke.alphacba.cms.service.rpc.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ke.alphacba.cms.core.api.dto.cms.UserInfoReq;
-import ke.alphacba.cms.core.api.dto.cms.UserInfoResp;
+import com.cms.base.api.dto.UserInfoReq;
+import com.cms.base.api.dto.UserInfoResp;
+
 import ke.alphacba.cms.core.rpc.CMSServiceRpc;
 import ke.alphacba.cms.service.dao.UserInfoDao;
 

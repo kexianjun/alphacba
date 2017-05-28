@@ -17,9 +17,19 @@
   		<artifactId>alphacba-cms-core</artifactId>
   		<version>1.0.0-SNAPSHOT</version>
   	</dependency>
-  	
-  	
-  </dependencies>
+
+
+  	<dependency>
+  		<groupId>ke</groupId>
+  		<artifactId>cms-base-api</artifactId>
+  		<version>1.0.0-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>ke</groupId>
+  		<artifactId>cms-base-web</artifactId>
+  		<version>1.0.0-SNAPSHOT</version>
+  	</dependency>
+    </dependencies>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
