@@ -32,13 +32,7 @@
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/assets/" mapping="/assets/**"/>
 	<mvc:resources location="/data/" mapping="/data/**"/>
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class="ke.alphacba.cms.core.web.interceptor.GlobalInterceptor"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
-
+	
 	<!-- FreeMarker的配置 -->
 	<bean id="freeMarkerConfigurer"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
@@ -85,7 +79,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="ke.alphacba.cms.core.web.interceptor.GlobalInterceptor">
+			<bean class="com.cms.base.web.interceptor.NormalRequestInterceptor">
 				<property name="excludedUrl">
 					<list>
 						<value>/login.htm</value>
@@ -134,9 +128,53 @@
 		</property>
 	</bean>
 	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="messageConverters">
+	        <list>
+	            <!--json转换器-->
+	            <ref bean="mappingJacksonHttpMessageConverter" />
+	        </list>
+	    </property>
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
+	    <property name="messageConverters">  
+	        <list>  
+	               <ref bean="mappingJacksonHttpMessageConverter" />  
+	        </list>  
+	    </property>  
+	</bean>  
+	
+	<bean id="mappingJacksonHttpMessageConverter"  
+    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+     	<property name = "supportedMediaTypes">  
+          <list>  
+            <bean class="org.springframework.http.MediaType">  
+             <constructor-arg index="0" value="text"/>  
+             <constructor-arg index="1" value="plain"/>  
+             <constructor-arg index="2" value="UTF-8"/>  
+            </bean>  
+            <bean class="org.springframework.http.MediaType">  
+             <constructor-arg index="0" value="*"/>  
+             <constructor-arg index="1" value="*"/>  
+             <constructor-arg index="2" value="UTF-8"/>  
+            </bean>  
+            <bean class="org.springframework.http.MediaType">  
+             <constructor-arg index="0" value="text"/>  
+             <constructor-arg index="1" value="*"/>  
+             <constructor-arg index="2" value="UTF-8"/>  
+            </bean>  
+             <bean class="org.springframework.http.MediaType">  
+             <constructor-arg index="0" value="application"/>  
+             <constructor-arg index="1" value="json"/>  
+             <constructor-arg index="2" value="UTF-8"/>  
+            </bean>  
+          </list>  
+    	</property>  
+	</bean>   
+	
 	<bean id="iCMSServiceRpc"  
         class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">  
-        <property name="serviceUrl" value="http://localhost:8100/cms-service/remoteservice" />  
+        <property name="serviceUrl" value="http://localhost:8080/cms-service/remoteservice" />  
         <property name="serviceInterface" value="ke.alphacba.cms.core.rpc.CMSServiceRpc" />  
     </bean> 
 </beans>

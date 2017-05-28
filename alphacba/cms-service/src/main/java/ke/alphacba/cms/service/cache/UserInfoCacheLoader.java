@@ -7,7 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import ke.alphacba.cms.core.api.pojo.UserInfo;
+import com.cms.base.api.pojo.UserInfo;
+
 import ke.alphacba.cms.core.cache.loader.AbstractCacheLoader;
 import ke.alphacba.cms.core.constant.CacheNameConstants;
 
@@ -25,7 +26,7 @@ public class UserInfoCacheLoader extends AbstractCacheLoader<UserInfo> {
 		Map<String, UserInfo> userInfos = new HashMap<>();
 		for(int i = 0; i < 10; i++){
 			UserInfo userInfo = new UserInfo();
-			userInfo.setUserId(Long.valueOf(1000 + i));
+			userInfo.setUserId("1001");
 			userInfo.setUserName("UserName" + i);
 			userInfos.put(CacheNameConstants.USER_INFO_PREFIX + userInfo.getUserId(), userInfo);
 		}

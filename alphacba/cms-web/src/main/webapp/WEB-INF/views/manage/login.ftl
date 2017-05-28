@@ -89,7 +89,7 @@
 								};
 									
 								$.ajax({
-									url: "data/login-check.php",
+									url: "login.json",
 									method: 'POST',
 									dataType: 'json',
 									data: {
@@ -107,7 +107,7 @@
 												// Redirect after successful login page (when progress bar reaches 100%)
 												if(resp.accessGranted)
 												{
-													window.location.href = 'dashboard-1.html';
+													window.location.href = 'index.htm';
 												}
 																						}
 										});
