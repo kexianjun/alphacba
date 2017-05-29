@@ -1,4 +1,4 @@
-package ke.alphacba.cms.core.rpc;
+package com.cms.base.api.rpc;
 
 import com.cms.base.api.dto.UserInfoReq;
 import com.cms.base.api.dto.UserInfoResp;

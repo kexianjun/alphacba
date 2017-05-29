@@ -11,13 +11,16 @@
  * - See the License for the specific language governing permissions and
  * - limitations under the License. 
  */
-package ke.alphacba.cms.service.ls;
+package com.cms.base.api.constants;
 
-import com.cms.base.api.dto.UserInfoReq;
-import com.cms.base.api.dto.UserInfoResp;
-
-public interface UserInfoService {
-	UserInfoResp userLogin(UserInfoReq req);
-
-	UserInfoResp getUserInfoByUserId(String userId);
+public interface ErrorNoConstants {
+	/*参数为空*/
+	static final int PARAMS_EMPTY_ERROR = 1000001;
+	/*用户id为空*/
+	static final int USER_ID_EMPTY_ERROR = 1000002;
+	/*id为{0}的用户不存在*/
+	static final int USER_NOT_EXIST_ERROR = 1000003;
+	/*用户名或密码错误*/
+	static final int LOGIN_PASSWD_ERROR = 1000004;
+	
 }

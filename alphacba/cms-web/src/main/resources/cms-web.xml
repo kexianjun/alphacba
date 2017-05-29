@@ -76,21 +76,6 @@
 		<property name="resolveLazily" value="true" />
 	</bean>
 	
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class="com.cms.base.web.interceptor.NormalRequestInterceptor">
-				<property name="excludedUrl">
-					<list>
-						<value>/login.htm</value>
-						<value>/login/login.json</value>
-						<value>/login/logout.htm</value>
-						<value>/login/checkcode.json</value>
-					</list>
-				</property>
-			</bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
 	<!-- 登陆时验证码的配置 -->
 	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
 		<property name="config">
@@ -175,6 +160,6 @@
 	<bean id="iCMSServiceRpc"  
         class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">  
         <property name="serviceUrl" value="http://localhost:8080/cms-service/remoteservice" />  
-        <property name="serviceInterface" value="ke.alphacba.cms.core.rpc.CMSServiceRpc" />  
+        <property name="serviceInterface" value="com.cms.base.api.rpc.CMSServiceRpc" />  
     </bean> 
 </beans>
