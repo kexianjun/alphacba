@@ -1,5 +1,8 @@
 package ke.alphacba.cms.service.as;
 
-public interface UserInfoAtomService {
+import com.cms.base.api.dto.UserInfoReq;
+import com.cms.base.api.dto.UserInfoResp;
 
+public interface UserInfoAtomService {
+	UserInfoResp getUserInfo( UserInfoReq req);
 }

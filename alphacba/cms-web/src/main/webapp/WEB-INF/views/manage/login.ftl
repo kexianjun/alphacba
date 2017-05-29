@@ -49,21 +49,21 @@
 						// Validation and Ajax action
 						$("form#login").validate({
 							rules: {
-								username: {
+								userId: {
 									required: true
 								},
 								
-								passwd: {
+								userPassword: {
 									required: true
 								}
 							},
 							
 							messages: {
-								username: {
-									required: '请输入用户名.'
+								userId: {
+									required: '请输入用户编号.'
 								},
 								
-								passwd: {
+								userPassword: {
 									required: '请输入密码.'
 								}
 							},
@@ -89,13 +89,13 @@
 								};
 									
 								$.ajax({
-									url: "data/login-check.php",
+									url: "login.json",
 									method: 'POST',
 									dataType: 'json',
 									data: {
 										do_login: true,
-										username: $(form).find('#username').val(),
-										passwd: $(form).find('#passwd').val(),
+										userId: $(form).find('#userId').val(),
+										userPassword: $(form).find('#userPassword').val(),
 									},
 									success: function(resp)
 									{
@@ -107,7 +107,7 @@
 												// Redirect after successful login page (when progress bar reaches 100%)
 												if(resp.accessGranted)
 												{
-													window.location.href = 'dashboard-1.html';
+													window.location.href = 'index.htm';
 												}
 																						}
 										});
@@ -158,18 +158,18 @@
 							<span>log in</span>
 						</a>-->
 						
-						<p>亲爱的用户，请输入用户名，密码!</p>
+						<p>亲爱的用户，请输入用户编号，密码!</p>
 					</div>
 	
 					
 					<div class="form-group">
-						<label class="control-label" for="username">用户名</label>
-						<input type="text" class="form-control" name="username" id="username" autocomplete="off" />
+						<label class="control-label" for="userId">用户编号</label>
+						<input type="text" class="form-control" name="userId" id="userId" autocomplete="off" />
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label" for="passwd">密码</label>
-						<input type="password" class="form-control" name="passwd" id="passwd" autocomplete="off" />
+						<label class="control-label" for="userPassword">密码</label>
+						<input type="userPassword" class="form-control" name="userPassword" id="userPassword" autocomplete="off" />
 					</div>
 					
 					<div class="form-group">

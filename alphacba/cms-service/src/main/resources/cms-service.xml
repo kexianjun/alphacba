@@ -44,7 +44,7 @@
 	<bean name="/remoteservice"  
 		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">  
        	<property name="service" ref="remote" />  
-      	<property name="serviceInterface" value="ke.alphacba.cms.core.rpc.CMSServiceRpc" />  
+      	<property name="serviceInterface" value="com.cms.base.api.rpc.CMSServiceRpc" />  
 	</bean>  
 	<!-- 加载properties文件 -->
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />

@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import ke.alphacba.cms.core.api.dto.cms.UserInfoReq;
-import ke.alphacba.cms.core.api.dto.cms.UserInfoResp;
-import ke.alphacba.cms.core.api.pojo.UserInfo;
+import com.cms.base.api.dto.UserInfoReq;
+import com.cms.base.api.dto.UserInfoResp;
+import com.cms.base.api.pojo.UserInfo;
+import com.cms.base.api.rpc.CMSServiceRpc;
+
 import ke.alphacba.cms.core.cache.SysCacheService;
-import ke.alphacba.cms.core.rpc.CMSServiceRpc;
 
 @Controller
 @RequestMapping("/")
