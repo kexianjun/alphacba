@@ -20,22 +20,40 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import ke.alphacba.cms.core.util.HttpUtils;
-
+import ke.alphacba.cms.core.util.NoSessionIdUtils;
+import ke.alphacba.cms.core.util.RequestUtils;
+@Component
 public class NormalRequestInterceptor implements HandlerInterceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(NormalRequestInterceptor.class);
 	/*不用权限过滤的URL*/
 	private List<String> excludedUrl;
+	private String plantformLoginUrl;
+	private String loginCookieName;
+	private String domain;
+	private int timeout;
 	
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		logger.info("info:" + request.getRequestURL());
+		if (logger.isDebugEnabled()) {
+			logger.info("客户端浏览器参数：");
+			logger.info("字符编码：" + request.getCharacterEncoding());
+			logger.info("内容类型：" + request.getContentType());
+			logger.info("客户端IP：" + RequestUtils.getRemoteIp(request));
+			logger.info("客户端请求Url：" + request.getRequestURL());
+			logger.info("服务器IP：" + request.getLocalAddr());
+			logger.info("服务器主机名：" + request.getLocalName());
+		}
+		NoSessionIdUtils.writeCookie(request.getSession(), request, response,loginCookieName==null?"":loginCookieName.trim(),domain,timeout);
+		String nosessionId = NoSessionIdUtils.getNoSessionId(request.getCookies(), loginCookieName==null?"":loginCookieName.trim());
 		//excludedUrl.stream().forEach((str)->logger.info("url:" + str.toString()));
 		return true;
 	}
@@ -66,4 +84,38 @@ public class NormalRequestInterceptor implements HandlerInterceptor {
 	public void setExcludedUrl(List<String> excludedUrl) {
 		this.excludedUrl = excludedUrl;
 	}
+
+	public String getLoginCookieName() {
+		return loginCookieName;
+	}
+
+	public void setLoginCookieName(String loginCookieName) {
+		this.loginCookieName = loginCookieName;
+	}
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
+	public int getTimeout() {
+		return timeout;
+	}
+
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
+	}
+
+	public String getPlantformLoginUrl() {
+		return plantformLoginUrl;
+	}
+
+	public void setPlantformLoginUrl(String plantformLoginUrl) {
+		this.plantformLoginUrl = plantformLoginUrl;
+	}
+	
+	
 }

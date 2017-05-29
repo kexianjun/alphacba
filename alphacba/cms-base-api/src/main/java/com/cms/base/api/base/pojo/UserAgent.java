@@ -11,32 +11,28 @@
  * - See the License for the specific language governing permissions and
  * - limitations under the License. 
  */
-package com.cms.base.api.base.dto;
+package com.cms.base.api.base.pojo;
 
-import java.io.Serializable;
+import com.cms.base.api.pojo.UserInfo;
 
-public class BaseReq implements Serializable{
+public class UserAgent extends UserInfo{
+	private long lastActiveTime = -1L;
+	private String sessionId;
 
-	private String headUserId;
-	private String headUserName;
-	private String loginIp;
-	public String getHeadUserId() {
-		return headUserId;
+	public long getLastActiveTime() {
+		return lastActiveTime;
 	}
-	public void setHeadUserId(String headUserId) {
-		this.headUserId = headUserId;
+
+	public void setLastActiveTime(long lastActiveTime) {
+		this.lastActiveTime = lastActiveTime;
 	}
-	public String getHeadUserName() {
-		return headUserName;
+
+	public String getSessionId() {
+		return sessionId;
 	}
-	public void setHeadUserName(String headUserName) {
-		this.headUserName = headUserName;
-	}
-	public String getLoginIp() {
-		return loginIp;
-	}
-	public void setLoginIp(String loginIp) {
-		this.loginIp = loginIp;
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 	
 }

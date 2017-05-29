@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cms.base.api.dto.UserInfoReq;
 import com.cms.base.api.dto.UserInfoResp;
 import com.cms.base.api.pojo.UserInfo;
+import com.cms.base.api.rpc.CMSServiceRpc;
 
 import ke.alphacba.cms.core.cache.SysCacheService;
-import ke.alphacba.cms.core.rpc.CMSServiceRpc;
 
 @Controller
 @RequestMapping("/")

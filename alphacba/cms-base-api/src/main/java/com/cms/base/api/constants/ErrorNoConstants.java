@@ -11,32 +11,18 @@
  * - See the License for the specific language governing permissions and
  * - limitations under the License. 
  */
-package com.cms.base.api.base.dto;
+package com.cms.base.api.constants;
 
-import java.io.Serializable;
-
-public class BaseReq implements Serializable{
-
-	private String headUserId;
-	private String headUserName;
-	private String loginIp;
-	public String getHeadUserId() {
-		return headUserId;
-	}
-	public void setHeadUserId(String headUserId) {
-		this.headUserId = headUserId;
-	}
-	public String getHeadUserName() {
-		return headUserName;
-	}
-	public void setHeadUserName(String headUserName) {
-		this.headUserName = headUserName;
-	}
-	public String getLoginIp() {
-		return loginIp;
-	}
-	public void setLoginIp(String loginIp) {
-		this.loginIp = loginIp;
-	}
+public interface ErrorNoConstants {
+	/*参数为空*/
+	static final int PARAMS_EMPTY_ERROR = 1000001;
+	/*用户id为空*/
+	static final int USER_ID_EMPTY_ERROR = 1000002;
+	/*id为{0}的用户不存在*/
+	static final int USER_NOT_EXIST_ERROR = 1000003;
+	/*用户名或密码错误*/
+	static final int LOGIN_PASSWD_ERROR = 1000004;
+	/*登陆失败*/
+	static final int LOGIN_ERROR = 1000005;
 	
 }

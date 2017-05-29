@@ -13,7 +13,9 @@
  */
 package com.cms.base.api.pojo;
 
-public class UserInfo {
+import java.io.Serializable;
+
+public class UserInfo implements Serializable{
 	private static final long serialVersionUID = -4649551055583224957L;
 	private String userId;
 	private String userName;

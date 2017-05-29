@@ -14,12 +14,18 @@
 package com.cms.base.api.dto;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.cms.base.api.base.dto.BaseResp;
 import com.cms.base.api.pojo.UserInfo;
 
-public class UserInfoResp extends BaseResp {
+public class UserInfoResp extends BaseResp implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5860671397908548639L;
+
 	private UserInfo respItem;
 	
 	private List<UserInfo> respItems;

@@ -1,5 +1,7 @@
 package ke.alphacba.cms.service.dao.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.cms.base.api.base.dto.BaseResp;
@@ -15,22 +17,23 @@ public class UserInfoDaoImpl extends BaseDao implements UserInfoDao {
 	private static final String SQPMAP_SPACE = "ke.alphacba.cms.UserInfo.";
 
 	@Override
-	public UserInfoResp getUserInfo(UserInfoReq userInfoReq) {
-		UserInfoResp userInfoResp = new UserInfoResp();
-		UserInfo userInfo = (UserInfo) getSqlSession().selectOne(SQPMAP_SPACE + "selectUserInfo",
-				userInfoReq.getParams());
-		userInfoResp.setRespItem(userInfo);
-		return userInfoResp;
+	public UserInfo getUserInfo(UserInfo userInfo) {
+		UserInfo result = (UserInfo) getSqlSession().selectOne(SQPMAP_SPACE + "selectUserInfo",
+				userInfo);
+		return result;
 	}
 
 	@Override
-	public BaseResp addUserInfo(UserInfoReq userInfoReq) {
-		return null;
+	public boolean addUserInfo(UserInfo userInfo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
-	public UserInfoResp pageQueryUserInfo(UserInfoReq userInfoReq) {
+	public List<UserInfo> pageQueryUserInfo(UserInfo userInfo) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
-}
+	}

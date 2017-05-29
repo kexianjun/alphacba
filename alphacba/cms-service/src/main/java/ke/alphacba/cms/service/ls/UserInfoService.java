@@ -17,5 +17,7 @@ import com.cms.base.api.dto.UserInfoReq;
 import com.cms.base.api.dto.UserInfoResp;
 
 public interface UserInfoService {
-	public UserInfoResp userLogin(UserInfoReq req);
+	UserInfoResp userLogin(UserInfoReq req);
+
+	UserInfoResp getUserInfoByUserId(String userId);
 }
