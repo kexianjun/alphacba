@@ -13,13 +13,17 @@
  */
 package com.cms.base.api.base.dto;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.Serializable;
 
-public class BaseResp {
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+public class BaseResp implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2545763479993382120L;
 	private static final int OK_SUCCESS = 0;
-	private int errorNo = 0;
+	private Integer errorNo = 0;
 	private String errorInfo = "操作成功!";
 	private String serviceIp;
 
@@ -36,15 +40,15 @@ public class BaseResp {
 	 */
 	private String resultJson;
 	
-	public int getErrorNo() {
+	public Integer getErrorNo() {
 		return errorNo;
 	}
 
-	public void setErrorNo(int errorNo) {
+	public void setErrorNo(Integer errorNo) {
 		this.setErrorNo(errorNo, new Object[] {});
 	}
 
-	public void setErrorNo(int errorNo, Object... params) {
+	public void setErrorNo(Integer errorNo, Object... params) {
 		this.errorNo = errorNo;
 		//this.setErrorInfo(MetadataService.getErrorInfo(errorNo, params));
 	}

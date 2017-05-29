@@ -20,13 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import ke.alphacba.cms.core.util.HttpUtils;
 import ke.alphacba.cms.core.util.NoSessionIdUtils;
 import ke.alphacba.cms.core.util.RequestUtils;
-
+@Component
 public class NormalRequestInterceptor implements HandlerInterceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(NormalRequestInterceptor.class);

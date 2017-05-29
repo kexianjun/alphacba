@@ -20,12 +20,19 @@ public class CMSServiceRpcImpl implements CMSServiceRpc {
 
 	@Override
 	public UserInfoResp getUserInfo(UserInfoReq userInfoReq) {
+		
+		return userInfoService.getUserInfoByUserId(userInfoReq.getParams().getUserId());
+	}
+
+	@Override
+	public UserInfoResp userLogin(UserInfoReq userInfoReq) {
 		UserInfoResp userInfoResp = null;
 		if (null == userInfoReq || null == userInfoReq.getParams()) {
 			userInfoResp = new UserInfoResp();
 			userInfoResp.setErrorNo(ErrorNoConstants.PARAMS_EMPTY_ERROR);
 			return userInfoResp;
 		}
-		return userInfoService.getUserInfoByUserId(userInfoReq.getParams().getUserId());
+		userInfoResp = userInfoService.userLogin(userInfoReq);
+		return userInfoResp;
 	}
 }

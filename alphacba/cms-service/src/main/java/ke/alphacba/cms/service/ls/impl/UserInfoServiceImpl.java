@@ -48,7 +48,7 @@ public class UserInfoServiceImpl implements UserInfoService{
 		}
 		
 		if (null == userInfoResp.getRespItem()) {
-			userInfoResp.setErrorNo(ErrorNoConstants.USER_NOT_EXIST_ERROR,req.getParams().getUserId());
+			userInfoResp.setErrorNo(new Integer(ErrorNoConstants.USER_NOT_EXIST_ERROR),req.getParams().getUserId());
 			return userInfoResp;
 		}
 		UserInfo userInfo = userInfoResp.getRespItem();

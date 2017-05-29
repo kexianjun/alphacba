@@ -44,7 +44,7 @@
 			<ref bean="connectionFactory" />
 		</constructor-arg>
 	</bean>
-	
+	<bean id="springContext" class="ke.alphacba.cms.core.context.SpringContext" />
 	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
         <property name="maxIdle" value="${redis.maxIdle}" />  
         <property name="testWhileIdle" value="${redis.testOnBorrow}" />  

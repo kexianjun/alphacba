@@ -22,5 +22,7 @@ public interface ErrorNoConstants {
 	static final int USER_NOT_EXIST_ERROR = 1000003;
 	/*用户名或密码错误*/
 	static final int LOGIN_PASSWD_ERROR = 1000004;
+	/*登陆失败*/
+	static final int LOGIN_ERROR = 1000005;
 	
 }

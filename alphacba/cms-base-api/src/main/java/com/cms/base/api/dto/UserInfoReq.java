@@ -13,11 +13,17 @@
  */
 package com.cms.base.api.dto;
 
+import java.io.Serializable;
+
 import com.cms.base.api.base.dto.BaseReq;
 import com.cms.base.api.pojo.UserInfo;
 
-public class UserInfoReq extends BaseReq {
+public class UserInfoReq extends BaseReq implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5406291319456150539L;
 	private UserInfo params;
 
 	public UserInfo getParams() {
